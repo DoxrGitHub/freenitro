@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Nitro Gen Thingy</title>
+  </head>
+  <body>
+    <p>No, as doxr I did not make this. Every time you refresh, a new link is generated.</p>
+    <br>
+    <div id=output>Generating a link... please stand by.</div>
+    <script>
+      fetch('/', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: 'doxr'
+        })
+      })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('output').innerHTML = '<a href="' + data + '">Click here, or manually copy the link if you want.</a><br><p style="font-size: small;">' + data;
+        })
+        .catch(error => console.error(error));
+
+    </script>
+  </body>
+</html>
